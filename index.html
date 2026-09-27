@@ -8,48 +8,290 @@
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
+/* =========================
+   GLOBAL
+========================= */
+
+html{
+ scroll-behavior:smooth;
+}
+
 body{
+ margin:0;
  font-family:'Inter',sans-serif;
  background:#020617;
  color:#e2e8f0;
  overflow-x:hidden;
 }
 
-.mono{font-family:'Fira Code',monospace;}
-
-.gradient-text{
- background:linear-gradient(90deg,#38BDF8,#A855F7);
- -webkit-background-clip:text;
- -webkit-text-fill-color:transparent;
+::selection{
+ background:#38bdf8;
+ color:#020617;
 }
 
-.glass{
- background:rgba(255,255,255,0.03);
- backdrop-filter:blur(10px);
- border:1px solid rgba(255,255,255,0.1);
+.mono{
+ font-family:'Fira Code',monospace;
 }
 
-.glass:hover{
- transform:translateY(-8px);
- box-shadow:0 0 40px rgba(56,189,248,0.2);
- transition:.4s;
-}
+/* =========================
+   BACKGROUND
+========================= */
 
 #bg{
  position:fixed;
- top:0;
- left:0;
- z-index:-1;
+ inset:0;
+ width:100%;
+ height:100%;
+ z-index:-3;
 }
+
+.bg-glow{
+ position:fixed;
+ width:500px;
+ height:500px;
+ border-radius:50%;
+ filter:blur(120px);
+ opacity:.12;
+ z-index:-2;
+ pointer-events:none;
+}
+
+.glow-one{
+ background:#0ea5e9;
+ top:-150px;
+ left:-150px;
+}
+
+.glow-two{
+ background:#9333ea;
+ bottom:-200px;
+ right:-150px;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+ background:rgba(2,6,23,.75);
+ backdrop-filter:blur(18px);
+ border-bottom:1px solid rgba(148,163,184,.1);
+}
+
+.nav-link{
+ position:relative;
+ color:#94a3b8;
+ transition:.3s;
+}
+
+.nav-link:hover{
+ color:#38bdf8;
+}
+
+.nav-link::after{
+ content:"";
+ position:absolute;
+ left:0;
+ bottom:-7px;
+ width:0;
+ height:2px;
+ background:#38bdf8;
+ transition:.3s;
+}
+
+.nav-link:hover::after{
+ width:100%;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.gradient-text{
+ background:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);
+ -webkit-background-clip:text;
+ background-clip:text;
+ -webkit-text-fill-color:transparent;
+}
+
+.cursor{
+ color:#38bdf8;
+ animation:blink 1s infinite;
+}
+
+@keyframes blink{
+ 50%{opacity:0;}
+}
+
+/* =========================
+   GLASS
+========================= */
+
+.glass{
+ background:rgba(15,23,42,.55);
+ backdrop-filter:blur(14px);
+ border:1px solid rgba(148,163,184,.12);
+}
+
+.glass:hover{
+ transform:translateY(-7px);
+ border-color:rgba(56,189,248,.35);
+ box-shadow:0 15px 50px rgba(14,165,233,.12);
+ transition:.4s;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero-orb{
+ width:320px;
+ height:320px;
+ border-radius:50%;
+ border:1px solid rgba(56,189,248,.15);
+ position:absolute;
+ animation:orb 8s linear infinite;
+}
+
+.hero-orb::before,
+.hero-orb::after{
+ content:"";
+ position:absolute;
+ border:1px solid rgba(168,85,247,.15);
+ border-radius:50%;
+}
+
+.hero-orb::before{
+ inset:30px;
+}
+
+.hero-orb::after{
+ inset:65px;
+}
+
+@keyframes orb{
+ from{
+  transform:rotate(0deg);
+ }
+ to{
+  transform:rotate(360deg);
+ }
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn-primary{
+ background:linear-gradient(90deg,#0ea5e9,#6366f1);
+ transition:.3s;
+}
+
+.btn-primary:hover{
+ transform:translateY(-3px);
+ box-shadow:0 10px 30px rgba(14,165,233,.3);
+}
+
+.btn-secondary{
+ border:1px solid rgba(148,163,184,.25);
+ transition:.3s;
+}
+
+.btn-secondary:hover{
+ border-color:#38bdf8;
+ color:#38bdf8;
+ transform:translateY(-3px);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section-label{
+ color:#38bdf8;
+ font-family:'Fira Code',monospace;
+ font-size:.8rem;
+ letter-spacing:.15em;
+ text-transform:uppercase;
+}
+
+/* =========================
+   SKILL BARS
+========================= */
+
+.skill-bar{
+ height:6px;
+ background:#1e293b;
+ border-radius:20px;
+ overflow:hidden;
+}
+
+.skill-fill{
+ height:100%;
+ border-radius:20px;
+ background:linear-gradient(90deg,#38bdf8,#8b5cf6);
+ width:0;
+ transition:width 1.5s ease;
+}
+
+/* =========================
+   PROJECT
+========================= */
+
+.project-card{
+ transition:.4s;
+}
+
+.project-card:hover{
+ transform:translateY(-10px);
+}
+
+.project-number{
+ color:#38bdf8;
+ font-family:'Fira Code',monospace;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+ position:relative;
+}
+
+.timeline::before{
+ content:"";
+ position:absolute;
+ left:14px;
+ top:0;
+ bottom:0;
+ width:2px;
+ background:linear-gradient(#38bdf8,#8b5cf6,transparent);
+}
+
+.timeline-dot{
+ position:absolute;
+ left:6px;
+ top:25px;
+ width:18px;
+ height:18px;
+ border-radius:50%;
+ background:#020617;
+ border:3px solid #38bdf8;
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
 
 .hiddenSec{
  opacity:0;
  transform:translateY(50px);
- transition:1s;
+ transition:1s ease;
 }
 
 .show{
@@ -57,152 +299,787 @@ body{
  transform:translateY(0);
 }
 
+/* =========================
+   SCROLL BAR
+========================= */
+
+#progress{
+ position:fixed;
+ top:0;
+ left:0;
+ height:3px;
+ background:linear-gradient(90deg,#38bdf8,#a855f7);
+ width:0%;
+ z-index:9999;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+ .hero-orb{
+  width:230px;
+  height:230px;
+ }
+
+ .hero-title{
+  font-size:2.8rem;
+ }
+
+}
+
 </style>
 </head>
 
 <body>
 
+<div id="progress"></div>
+
 <canvas id="bg"></canvas>
 
-<!-- NAVBAR -->
-<nav class="fixed top-0 w-full glass py-4 px-6 flex justify-between">
-<span class="mono text-sky-400 font-bold text-xl">Manne Ganesh</span>
-<div class="space-x-6 hidden md:block">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar fixed top-0 left-0 w-full z-50">
+
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+<a href="#home"
+class="mono text-sky-400 font-bold text-xl">
+MG<span class="text-slate-500">.</span>
+</a>
+
+<div class="hidden md:flex gap-8 text-sm">
+
+<a href="#home" class="nav-link">Home</a>
+<a href="#about" class="nav-link">About</a>
+<a href="#skills" class="nav-link">Skills</a>
+<a href="#education" class="nav-link">Education</a>
+<a href="#projects" class="nav-link">Projects</a>
+<a href="#contact" class="nav-link">Contact</a>
+
 </div>
+
+<a href="ManneGaneshResume.pdf"
+download
+class="hidden md:block px-5 py-2 rounded-full btn-primary text-sm font-semibold text-white">
+
+Resume
+
+</a>
+
+</div>
+
 </nav>
 
-<!-- HERO -->
-<section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-6">
 
-<h2 class="mono text-sky-400 mb-4 uppercase text-sm">
-AI / ML Engineer
-</h2>
+<!-- ================= HERO ================= -->
 
-<h1 class="text-5xl md:text-7xl font-bold mb-6">
-<span id="typing" class="gradient-text"></span>
-</h1>
+<section id="home"
+class="min-h-screen flex items-center justify-center relative px-6 pt-20">
 
-<span class="bg-green-500/10 text-green-400 px-4 py-1 rounded-full mb-6">
-✅ Open to AI/ML Internships – 2026
-</span>
+<div class="hero-orb"></div>
 
-<p class="max-w-xl text-slate-400 mb-8">
-Computer Science student passionate about Deep Learning,
-AI automation and intelligent real-world systems.
+<div class="max-w-5xl text-center relative z-10">
+
+<p class="section-label mb-5">
+AI / ML DEVELOPER
 </p>
 
-<div class="flex gap-4">
-<a href="#projects" class="px-8 py-3 bg-sky-500 text-black rounded-full font-bold">
-View Work
+<h1 class="hero-title text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+
+<span class="gradient-text" id="typing"></span>
+<span class="cursor">|</span>
+
+</h1>
+
+<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+
+Computer Science undergraduate specializing in
+<strong class="text-slate-200">AI & Machine Learning</strong>,
+building practical software, deep-learning systems,
+and intelligent applications.
+
+</p>
+
+<div class="flex flex-wrap justify-center gap-4 mb-10">
+
+<a href="#projects"
+class="btn-primary px-7 py-3 rounded-full font-semibold">
+
+View My Work →
+
 </a>
 
-<a href="ManneGaneshResume.pdf" download
-class="px-8 py-3 border border-slate-700 rounded-full">
-Resume
+<a href="ManneGaneshResume.pdf"
+download
+class="btn-secondary px-7 py-3 rounded-full font-semibold">
+
+Download Resume
+
 </a>
+
+</div>
+
+<div class="flex flex-wrap justify-center gap-3">
+
+<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
+🐍 Python
+</span>
+
+<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
+☕ Java
+</span>
+
+<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
+🧠 Machine Learning
+</span>
+
+<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
+🔥 TensorFlow
+</span>
+
+</div>
+
 </div>
 
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="max-w-6xl mx-auto py-20 px-6 hiddenSec">
 
-<h3 class="text-3xl font-bold text-center mb-12">
-Core Stack
+<!-- ================= ABOUT ================= -->
+
+<section id="about"
+class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+
+<div class="text-center mb-14">
+
+<p class="section-label mb-3">
+01 — ABOUT
+</p>
+
+<h2 class="text-4xl font-bold">
+Building with <span class="gradient-text">AI & Software</span>
+</h2>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-8 items-center">
+
+<div class="glass rounded-3xl p-8">
+
+<h3 class="text-2xl font-bold mb-5">
+Who I Am
 </h3>
+
+<p class="text-slate-400 leading-8">
+
+I am a Computer Science undergraduate specializing in
+<strong class="text-slate-200">Artificial Intelligence & Machine Learning</strong>.
+My interests span software development, machine learning,
+deep learning, data structures and practical AI applications.
+
+</p>
+
+<p class="text-slate-400 leading-8 mt-5">
+
+I enjoy taking an idea, breaking it into technical components,
+and turning it into a working application. My projects focus on
+solving practical problems through software and AI.
+
+</p>
+
+</div>
+
+
+<div class="grid grid-cols-2 gap-4">
+
+<div class="glass rounded-3xl p-6">
+
+<p class="text-3xl font-bold gradient-text">
+2027
+</p>
+
+<p class="text-slate-500 mt-2">
+Graduation
+</p>
+
+</div>
+
+<div class="glass rounded-3xl p-6">
+
+<p class="text-3xl font-bold gradient-text">
+7.18
+</p>
+
+<p class="text-slate-500 mt-2">
+CGPA
+</p>
+
+</div>
+
+<div class="glass rounded-3xl p-6">
+
+<p class="text-3xl font-bold gradient-text">
+03+
+</p>
+
+<p class="text-slate-500 mt-2">
+Major Projects
+</p>
+
+</div>
+
+<div class="glass rounded-3xl p-6">
+
+<p class="text-3xl font-bold gradient-text">
+AI/ML
+</p>
+
+<p class="text-slate-500 mt-2">
+Specialization
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SKILLS ================= -->
+
+<section id="skills"
+class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+
+<div class="text-center mb-14">
+
+<p class="section-label mb-3">
+02 — TECHNICAL SKILLS
+</p>
+
+<h2 class="text-4xl font-bold">
+My <span class="gradient-text">Technical Stack</span>
+</h2>
+
+</div>
+
+
+<div class="grid md:grid-cols-2 gap-6">
+
+
+<div class="glass rounded-3xl p-7">
+
+<h3 class="text-xl font-bold mb-6">
+Programming
+</h3>
+
+<div class="space-y-6">
+
+<div>
+<div class="flex justify-between mb-2 text-sm">
+<span>Python</span>
+<span class="text-sky-400">AI / ML</span>
+</div>
+<div class="skill-bar">
+<div class="skill-fill" data-width="90%"></div>
+</div>
+</div>
+
+<div>
+<div class="flex justify-between mb-2 text-sm">
+<span>Java</span>
+<span class="text-sky-400">Application Development</span>
+</div>
+<div class="skill-bar">
+<div class="skill-fill" data-width="85%"></div>
+</div>
+</div>
+
+<div>
+<div class="flex justify-between mb-2 text-sm">
+<span>C</span>
+<span class="text-sky-400">Core Programming</span>
+</div>
+<div class="skill-bar">
+<div class="skill-fill" data-width="70%"></div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="glass rounded-3xl p-7">
+
+<h3 class="text-xl font-bold mb-6">
+AI / Machine Learning
+</h3>
+
+<div class="flex flex-wrap gap-3">
+
+<span class="px-4 py-2 rounded-full bg-sky-500/10 text-sky-400">
+TensorFlow
+</span>
+
+<span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400">
+Keras
+</span>
+
+<span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400">
+CNN
+</span>
+
+<span class="px-4 py-2 rounded-full bg-orange-500/10 text-orange-400">
+Image Processing
+</span>
+
+<span class="px-4 py-2 rounded-full bg-pink-500/10 text-pink-400">
+Data Augmentation
+</span>
+
+<span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400">
+Machine Learning
+</span>
+
+</div>
+
+</div>
+
+
+<div class="glass rounded-3xl p-7">
+
+<h3 class="text-xl font-bold mb-6">
+Development
+</h3>
+
+<div class="flex flex-wrap gap-3">
+
+<span class="px-4 py-2 rounded-full bg-orange-500/10 text-orange-400">Android Studio</span>
+<span class="px-4 py-2 rounded-full bg-yellow-500/10 text-yellow-400">XML</span>
+<span class="px-4 py-2 rounded-full bg-green-500/10 text-green-400">HTML</span>
+<span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400">CSS</span>
+<span class="px-4 py-2 rounded-full bg-yellow-500/10 text-yellow-400">JavaScript</span>
+
+</div>
+
+</div>
+
+
+<div class="glass rounded-3xl p-7">
+
+<h3 class="text-xl font-bold mb-6">
+Databases & CS Fundamentals
+</h3>
+
+<div class="flex flex-wrap gap-3">
+
+<span class="px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400">MySQL</span>
+<span class="px-4 py-2 rounded-full bg-slate-500/10 text-slate-300">SQLite</span>
+<span class="px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400">OOP</span>
+<span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400">DSA</span>
+<span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400">Software Development</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STRONG SUBJECTS ================= -->
+
+<section class="py-20 px-6">
+
+<div class="max-w-5xl mx-auto text-center">
+
+<p class="section-label mb-4">
+CORE KNOWLEDGE
+</p>
+
+<h2 class="text-3xl font-bold mb-10">
+Strong Subjects
+</h2>
+
+<div class="flex flex-wrap justify-center gap-4">
+
+<span class="glass px-6 py-3 rounded-full">Java</span>
+<span class="glass px-6 py-3 rounded-full">Python</span>
+<span class="glass px-6 py-3 rounded-full">OOP</span>
+<span class="glass px-6 py-3 rounded-full">Data Structures & Algorithms</span>
+<span class="glass px-6 py-3 rounded-full">SQL</span>
+<span class="glass px-6 py-3 rounded-full">Machine Learning</span>
+<span class="glass px-6 py-3 rounded-full">Artificial Intelligence</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= EDUCATION ================= -->
+
+<section id="education"
+class="max-w-5xl mx-auto py-24 px-6 hiddenSec">
+
+<div class="text-center mb-14">
+
+<p class="section-label mb-3">
+03 — EDUCATION
+</p>
+
+<h2 class="text-4xl font-bold">
+Academic <span class="gradient-text">Journey</span>
+</h2>
+
+</div>
+
+
+<div class="timeline pl-12 space-y-10">
+
+
+<div class="relative">
+
+<div class="timeline-dot"></div>
+
+<div class="glass rounded-3xl p-7">
+
+<span class="mono text-sky-400 text-sm">
+2023 — 2027
+</span>
+
+<h3 class="text-xl font-bold mt-2">
+B.Tech — Computer Science & Engineering (AI & ML)
+</h3>
+
+<p class="text-slate-400 mt-2">
+CMR Technical Campus
+</p>
+
+<p class="text-slate-500 mt-3">
+Autonomous • 7.18 CGPA
+</p>
+
+</div>
+
+</div>
+
+
+<div class="relative">
+
+<div class="timeline-dot"></div>
+
+<div class="glass rounded-3xl p-7">
+
+<span class="mono text-purple-400 text-sm">
+2021 — 2023
+</span>
+
+<h3 class="text-xl font-bold mt-2">
+Intermediate
+</h3>
+
+<p class="text-slate-400 mt-2">
+Sri Chaitanya Jr Kalasala
+</p>
+
+<p class="text-slate-500 mt-3">
+80%
+</p>
+
+</div>
+
+</div>
+
+
+<div class="relative">
+
+<div class="timeline-dot"></div>
+
+<div class="glass rounded-3xl p-7">
+
+<span class="mono text-emerald-400 text-sm">
+2021
+</span>
+
+<h3 class="text-xl font-bold mt-2">
+Secondary School Certificate
+</h3>
+
+<p class="text-slate-400 mt-2">
+Naagarjuna Talent School
+</p>
+
+<p class="text-slate-500 mt-3">
+9.5 CGPA
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects"
+class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+
+<div class="text-center mb-14">
+
+<p class="section-label mb-3">
+04 — PROJECTS
+</p>
+
+<h2 class="text-4xl font-bold">
+Featured <span class="gradient-text">Projects</span>
+</h2>
+
+<p class="text-slate-500 mt-4">
+Practical applications combining software engineering and AI.
+</p>
+
+</div>
+
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+<!-- PROJECT 01 -->
+
+<div class="glass project-card rounded-3xl p-7">
+
+<div class="flex justify-between items-center mb-5">
+
+<span class="project-number">
+01
+</span>
+
+<span class="text-3xl">
+🌱
+</span>
+
+</div>
+
+<h3 class="text-xl font-bold mb-3">
+Brinjal Leaf Disease Detection
+</h3>
+
+<p class="text-slate-400 text-sm leading-7 mb-5">
+
+Web-based deep learning application that detects
+brinjal leaf diseases from user-uploaded images.
+A CNN-based pipeline uses image preprocessing and
+data augmentation for classification.
+
+</p>
+
+<div class="flex flex-wrap gap-2">
+
+<span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-400">
+Python
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-red-500/10 text-red-400">
+TensorFlow
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-400">
+CNN
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400">
+HTML/CSS
+</span>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 02 -->
+
+<div class="glass project-card rounded-3xl p-7">
+
+<div class="flex justify-between items-center mb-5">
+
+<span class="project-number">
+02
+</span>
+
+<span class="text-3xl">
+📱
+</span>
+
+</div>
+
+<h3 class="text-xl font-bold mb-3">
+Android Quiz Application
+</h3>
+
+<p class="text-slate-400 text-sm leading-7 mb-5">
+
+Category-based Android quiz application featuring
+timed question rounds, real-time score tracking,
+multiple linked activities and responsive UI design.
+
+</p>
+
+<div class="flex flex-wrap gap-2">
+
+<span class="text-xs px-3 py-1 rounded-full bg-orange-500/10 text-orange-400">
+Java
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-400">
+Android Studio
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400">
+XML
+</span>
+
+</div>
+
+</div>
+
+
+<!-- PROJECT 03 -->
+
+<div class="glass project-card rounded-3xl p-7">
+
+<div class="flex justify-between items-center mb-5">
+
+<span class="project-number">
+03
+</span>
+
+<span class="text-3xl">
+🥛
+</span>
+
+</div>
+
+<h3 class="text-xl font-bold mb-3">
+Milkfy
+</h3>
+
+<p class="text-slate-400 text-sm leading-7 mb-5">
+
+Startup-style milk subscription and delivery platform
+concept designed to digitize local milk distribution,
+including subscription tracking, customer management,
+delivery scheduling and automated billing.
+
+</p>
+
+<div class="flex flex-wrap gap-2">
+
+<span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400">
+Python
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-orange-500/10 text-orange-400">
+HTML/CSS
+</span>
+
+<span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400">
+Supabase
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<section class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+
+<div class="text-center mb-14">
+
+<p class="section-label mb-3">
+05 — ACHIEVEMENTS
+</p>
+
+<h2 class="text-4xl font-bold">
+Beyond <span class="gradient-text">Academics</span>
+</h2>
+
+</div>
+
 
 <div class="grid md:grid-cols-3 gap-6">
 
-<div class="glass p-6 rounded-3xl">
-<h4 class="font-bold">Languages</h4>
-<p class="text-slate-400">Python, Java, C, JavaScript</p>
+
+<div class="glass rounded-3xl p-7">
+
+<div class="text-3xl mb-5">
+🏆
 </div>
 
-<div class="glass p-6 rounded-3xl">
-<h4 class="font-bold">AI/ML</h4>
-<p class="text-slate-400">TensorFlow, Keras, Scikit-Learn</p>
-</div>
-
-<div class="glass p-6 rounded-3xl">
-<h4 class="font-bold">Web</h4>
-<p class="text-slate-400">HTML,CSS,JAVA <SCRIPT></SCRIPT></p>
-</div>
-
-</div>
-</section>
-
-
-
-
-<section id="projects" class="max-w-6xl mx-auto py-20 px-6 hiddenSec">
-
-<h3 class="text-3xl font-bold mb-12 text-center">
-Featured Projects
+<h3 class="font-bold text-lg mb-3">
+Hackathons
 </h3>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-
-
-
-
-<!-- Crop Yield -->
-<div class="glass p-6 rounded-3xl">
-<h4 class="text-xl font-bold mb-2">
-📊 Crop Yield Predictor
-</h4>
-
-<p class="text-slate-400 text-sm mb-4">
-Machine learning model predicting agricultural production 
-using environmental and soil parameters.
+<p class="text-slate-400 text-sm leading-7">
+Participated in hackathons and competitive coding
+events, applying problem-solving skills under
+time constraints.
 </p>
 
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full">ML</span>
-<span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full">Python</span>
 </div>
 
+
+<div class="glass rounded-3xl p-7">
+
+<div class="text-3xl mb-5">
+🚀
 </div>
 
-<!-- ANDROID QUIZ APP -->
-<div class="glass p-6 rounded-3xl">
-<h4 class="text-xl font-bold mb-2">
-📱 Android Quiz Application
-</h4>
+<h3 class="font-bold text-lg mb-3">
+Startup Concepts
+</h3>
 
-<p class="text-slate-400 text-sm mb-4">
-Developed a category-based Android quiz app using Java and Android Studio 
-with timers, score tracking, image-based questions, and cloud database integration.
+<p class="text-slate-400 text-sm leading-7">
+Initiated and scoped independent startup concepts,
+turning early-stage ideas into structured product plans.
 </p>
 
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-full">Java</span>
-<span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-full">Android Studio</span>
-<span class="px-3 py-1 bg-orange-500/10 text-orange-400 text-xs rounded-full">SQLite</span>
 </div>
 
+
+<div class="glass rounded-3xl p-7">
+
+<div class="text-3xl mb-5">
+🧠
 </div>
 
-<!-- BRINJAL DISEASE DETECTION -->
-<div class="glass p-6 rounded-3xl">
-<h4 class="text-xl font-bold mb-2">
-🌱 Brinjal Disease Detection using ML
-</h4>
+<h3 class="font-bold text-lg mb-3">
+Continuous Learning
+</h3>
 
-<p class="text-slate-400 text-sm mb-4">
-Machine learning-based plant disease detection system that identifies 
-brinjal leaf diseases using image classification techniques.
+<p class="text-slate-400 text-sm leading-7">
+Actively developing AI/ML skills through self-directed
+projects, experimentation and academic coursework.
 </p>
-
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full">Python</span>
-<span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full">CNN</span>
-<span class="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-xs rounded-full">Deep Learning</span>
-</div>
 
 </div>
 
@@ -211,94 +1088,318 @@ brinjal leaf diseases using image classification techniques.
 </section>
 
 
+<!-- ================= GITHUB ================= -->
 
-<!-- GITHUB -->
-<section class="text-center py-16 hiddenSec">
+<section class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
 
-<h3 class="text-3xl font-bold mb-6">
-GitHub Activity
-</h3>
+<div class="text-center mb-10">
 
-<img src="https://github-readme-stats.vercel.app/api?username=manneganesh27&show_icons=true&theme=tokyonight"/>
+<p class="section-label mb-3">
+06 — OPEN SOURCE
+</p>
+
+<h2 class="text-4xl font-bold">
+GitHub <span class="gradient-text">Activity</span>
+</h2>
+
+</div>
+
+<div class="glass rounded-3xl p-5 overflow-hidden text-center">
+
+<img
+src="https://github-readme-stats.vercel.app/api?username=manneganesh27&show_icons=true&theme=tokyonight&hide_border=true"
+alt="GitHub statistics"
+class="mx-auto max-w-full"
+>
+
+<div class="mt-6">
+
+<a
+href="https://github.com/manneganesh27"
+target="_blank"
+class="btn-secondary inline-block px-6 py-3 rounded-full"
+>
+
+View GitHub Profile →
+
+</a>
+
+</div>
+
+</div>
 
 </section>
 
-<!-- CONTACT -->
-<footer id="contact" class="py-20 text-center border-t border-slate-900">
 
-<h3 class="text-2xl font-bold mb-4">
-Let's Connect
-</h3>
+<!-- ================= CONTACT ================= -->
 
-<div class="space-x-6">
-<a href="#">GitHub</a>
-<a href="#">LinkedIn</a>
-<a href="mailto:yourmail@gmail.com">Email</a>
+<section id="contact"
+class="max-w-5xl mx-auto py-28 px-6 text-center">
+
+<p class="section-label mb-4">
+07 — CONTACT
+</p>
+
+<h2 class="text-4xl md:text-5xl font-bold mb-6">
+
+Let's build something
+<span class="gradient-text">intelligent.</span>
+
+</h2>
+
+<p class="text-slate-400 max-w-xl mx-auto mb-10">
+
+Interested in AI/ML, software development, internships,
+collaborations or building practical products?
+
+Let's connect.
+
+</p>
+
+
+<div class="flex flex-wrap justify-center gap-4">
+
+<a
+href="mailto:manneganesh27@gmail.com"
+class="btn-primary px-7 py-3 rounded-full font-semibold"
+>
+
+Email Me
+
+</a>
+
+<a
+href="https://www.linkedin.com/in/manne-ganesh-86a95a28b"
+target="_blank"
+class="btn-secondary px-7 py-3 rounded-full"
+>
+
+LinkedIn
+
+</a>
+
+<a
+href="https://github.com/manneganesh27"
+target="_blank"
+class="btn-secondary px-7 py-3 rounded-full"
+>
+
+GitHub
+
+</a>
+
 </div>
 
-<p class="mt-10 text-xs text-slate-600">
-© 2026 Manne Ganesh
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="border-t border-slate-900 py-10 text-center">
+
+<p class="mono text-sky-400 font-semibold">
+Manne Ganesh
+</p>
+
+<p class="text-slate-600 text-sm mt-3">
+AI & ML Developer • CSE Undergraduate
+</p>
+
+<p class="text-slate-700 text-xs mt-6">
+© 2026 Manne Ganesh. Built with HTML, CSS & JavaScript.
 </p>
 
 </footer>
 
+
 <!-- ================= SCRIPTS ================= -->
 
 <script>
+
+/* =================
+   TYPING EFFECT
+================= */
+
 const text="Building Intelligent AI Systems";
 let i=0;
-function typing(){
- if(i<text.length){
-  document.getElementById("typing").innerHTML+=text.charAt(i);
-  i++;
-  setTimeout(typing,60);
- }
-}
-typing();
-</script>
 
-<script>
+function typing(){
+
+ if(i<text.length){
+
+  document.getElementById("typing").textContent += text.charAt(i);
+
+  i++;
+
+  setTimeout(typing,60);
+
+ }
+
+}
+
+typing();
+
+
+/* =================
+   PARTICLE BACKGROUND
+================= */
+
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
 let particles=[];
-for(let i=0;i<80;i++){
- particles.push({
-  x:Math.random()*canvas.width,
-  y:Math.random()*canvas.height,
-  r:Math.random()*2
- });
+
+function resizeCanvas(){
+
+ canvas.width=window.innerWidth;
+ canvas.height=window.innerHeight;
+
 }
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+
+for(let i=0;i<90;i++){
+
+ particles.push({
+
+  x:Math.random()*window.innerWidth,
+  y:Math.random()*window.innerHeight,
+
+  r:Math.random()*1.8+.4,
+
+  speed:Math.random()*.5+.15
+
+ });
+
+}
+
 
 function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- particles.forEach(p=>{
-  ctx.beginPath();
-  ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-  ctx.fillStyle="rgba(56,189,248,0.6)";
-  ctx.fill();
-  p.y+=0.3;
-  if(p.y>canvas.height)p.y=0;
- });
- requestAnimationFrame(animate);
-}
-animate();
-</script>
 
-<script>
-const observer=new IntersectionObserver(entries=>{
- entries.forEach(entry=>{
-  if(entry.isIntersecting){
-   entry.target.classList.add("show");
+ ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ particles.forEach(p=>{
+
+  ctx.beginPath();
+
+  ctx.arc(
+   p.x,
+   p.y,
+   p.r,
+   0,
+   Math.PI*2
+  );
+
+  ctx.fillStyle="rgba(56,189,248,.55)";
+
+  ctx.fill();
+
+  p.y+=p.speed;
+
+  if(p.y>canvas.height){
+
+   p.y=0;
+   p.x=Math.random()*canvas.width;
+
   }
+
  });
+
+ requestAnimationFrame(animate);
+
+}
+
+animate();
+
+
+/* =================
+   SCROLL ANIMATION
+================= */
+
+const observer=new IntersectionObserver(
+
+ entries=>{
+
+  entries.forEach(entry=>{
+
+   if(entry.isIntersecting){
+
+    entry.target.classList.add("show");
+
+   }
+
+  });
+
+ },
+
+ {threshold:.12}
+
+);
+
+
+document
+.querySelectorAll(".hiddenSec")
+.forEach(section=>observer.observe(section));
+
+
+/* =================
+   SKILL ANIMATION
+================= */
+
+const skillObserver=new IntersectionObserver(
+
+ entries=>{
+
+  entries.forEach(entry=>{
+
+   if(entry.isIntersecting){
+
+    const bars=entry.target.querySelectorAll(".skill-fill");
+
+    bars.forEach(bar=>{
+
+     bar.style.width=bar.dataset.width;
+
+    });
+
+   }
+
+  });
+
+ },
+
+ {threshold:.4}
+
+);
+
+
+document
+.querySelectorAll("#skills")
+.forEach(section=>skillObserver.observe(section));
+
+
+/* =================
+   SCROLL PROGRESS
+================= */
+
+window.addEventListener("scroll",()=>{
+
+ const scrollTop=window.scrollY;
+
+ const height=
+ document.documentElement.scrollHeight-
+ window.innerHeight;
+
+ const progress=(scrollTop/height)*100;
+
+ document.getElementById("progress").style.width=
+ progress+"%";
+
 });
 
-document.querySelectorAll(".hiddenSec")
-.forEach(sec=>observer.observe(sec));
 </script>
 
 </body>
