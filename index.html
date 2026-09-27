@@ -12,321 +12,367 @@
 
 <style>
 
-/* =========================
-   GLOBAL
-========================= */
-
 html{
- scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
- margin:0;
- font-family:'Inter',sans-serif;
- background:#020617;
- color:#e2e8f0;
- overflow-x:hidden;
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:#020617;
+    color:#e2e8f0;
+    overflow-x:hidden;
 }
 
 ::selection{
- background:#38bdf8;
- color:#020617;
+    background:#38bdf8;
+    color:#020617;
 }
 
 .mono{
- font-family:'Fira Code',monospace;
+    font-family:'Fira Code',monospace;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* ================= BACKGROUND ================= */
 
 #bg{
- position:fixed;
- inset:0;
- width:100%;
- height:100%;
- z-index:-3;
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-5;
 }
 
 .bg-glow{
- position:fixed;
- width:500px;
- height:500px;
- border-radius:50%;
- filter:blur(120px);
- opacity:.12;
- z-index:-2;
- pointer-events:none;
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.12;
+    z-index:-3;
+    pointer-events:none;
 }
 
 .glow-one{
- background:#0ea5e9;
- top:-150px;
- left:-150px;
+    background:#0ea5e9;
+    top:-180px;
+    left:-180px;
 }
 
 .glow-two{
- background:#9333ea;
- bottom:-200px;
- right:-150px;
+    background:#9333ea;
+    bottom:-200px;
+    right:-180px;
 }
 
-/* =========================
-   NAVBAR
-========================= */
+/* ================= NAVBAR ================= */
 
 .navbar{
- background:rgba(2,6,23,.75);
- backdrop-filter:blur(18px);
- border-bottom:1px solid rgba(148,163,184,.1);
+    background:rgba(2,6,23,.78);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(148,163,184,.1);
 }
 
 .nav-link{
- position:relative;
- color:#94a3b8;
- transition:.3s;
+    position:relative;
+    color:#94a3b8;
+    transition:.3s;
 }
 
 .nav-link:hover{
- color:#38bdf8;
+    color:#38bdf8;
 }
 
 .nav-link::after{
- content:"";
- position:absolute;
- left:0;
- bottom:-7px;
- width:0;
- height:2px;
- background:#38bdf8;
- transition:.3s;
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:2px;
+    background:#38bdf8;
+    transition:.3s;
 }
 
 .nav-link:hover::after{
- width:100%;
+    width:100%;
 }
 
-/* =========================
-   TEXT
-========================= */
+/* ================= TEXT ================= */
 
 .gradient-text{
- background:linear-gradient(90deg,#38bdf8,#818cf8,#c084fc);
- -webkit-background-clip:text;
- background-clip:text;
- -webkit-text-fill-color:transparent;
+    background:linear-gradient(
+        90deg,
+        #38bdf8,
+        #818cf8,
+        #c084fc
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
 }
 
 .cursor{
- color:#38bdf8;
- animation:blink 1s infinite;
+    color:#38bdf8;
+    animation:blink 1s infinite;
 }
 
 @keyframes blink{
- 50%{opacity:0;}
+    50%{
+        opacity:0;
+    }
 }
 
-/* =========================
-   GLASS
-========================= */
+/* ================= GLASS ================= */
 
 .glass{
- background:rgba(15,23,42,.55);
- backdrop-filter:blur(14px);
- border:1px solid rgba(148,163,184,.12);
+    background:rgba(15,23,42,.55);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(148,163,184,.12);
 }
 
 .glass:hover{
- transform:translateY(-7px);
- border-color:rgba(56,189,248,.35);
- box-shadow:0 15px 50px rgba(14,165,233,.12);
- transition:.4s;
+    transform:translateY(-7px);
+    border-color:rgba(56,189,248,.35);
+    box-shadow:0 15px 50px rgba(14,165,233,.12);
+    transition:.4s;
 }
 
-/* =========================
-   HERO
-========================= */
-
-.hero-orb{
- width:320px;
- height:320px;
- border-radius:50%;
- border:1px solid rgba(56,189,248,.15);
- position:absolute;
- animation:orb 8s linear infinite;
-}
-
-.hero-orb::before,
-.hero-orb::after{
- content:"";
- position:absolute;
- border:1px solid rgba(168,85,247,.15);
- border-radius:50%;
-}
-
-.hero-orb::before{
- inset:30px;
-}
-
-.hero-orb::after{
- inset:65px;
-}
-
-@keyframes orb{
- from{
-  transform:rotate(0deg);
- }
- to{
-  transform:rotate(360deg);
- }
-}
-
-/* =========================
-   BUTTONS
-========================= */
+/* ================= BUTTONS ================= */
 
 .btn-primary{
- background:linear-gradient(90deg,#0ea5e9,#6366f1);
- transition:.3s;
+    background:linear-gradient(
+        90deg,
+        #0ea5e9,
+        #6366f1
+    );
+    transition:.3s;
 }
 
 .btn-primary:hover{
- transform:translateY(-3px);
- box-shadow:0 10px 30px rgba(14,165,233,.3);
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(14,165,233,.3);
 }
 
 .btn-secondary{
- border:1px solid rgba(148,163,184,.25);
- transition:.3s;
+    border:1px solid rgba(148,163,184,.25);
+    transition:.3s;
 }
 
 .btn-secondary:hover{
- border-color:#38bdf8;
- color:#38bdf8;
- transform:translateY(-3px);
+    border-color:#38bdf8;
+    color:#38bdf8;
+    transform:translateY(-3px);
 }
 
-/* =========================
-   SECTION
-========================= */
+/* ================= SECTION LABEL ================= */
 
 .section-label{
- color:#38bdf8;
- font-family:'Fira Code',monospace;
- font-size:.8rem;
- letter-spacing:.15em;
- text-transform:uppercase;
+    color:#38bdf8;
+    font-family:'Fira Code',monospace;
+    font-size:.8rem;
+    letter-spacing:.15em;
+    text-transform:uppercase;
 }
 
-/* =========================
-   SKILL BARS
-========================= */
+/* ================= HERO ORBITS ================= */
+
+.hero-orbit{
+    position:absolute;
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    border:1px solid rgba(56,189,248,.10);
+    animation:spin 20s linear infinite;
+}
+
+.hero-orbit-two{
+    position:absolute;
+    width:330px;
+    height:330px;
+    border-radius:50%;
+    border:1px solid rgba(168,85,247,.12);
+    animation:spinReverse 15s linear infinite;
+}
+
+@keyframes spin{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes spinReverse{
+    from{
+        transform:rotate(360deg);
+    }
+
+    to{
+        transform:rotate(0deg);
+    }
+}
+
+/* ================= PROFILE IMAGE ================= */
+
+.hero-image{
+    filter:
+        drop-shadow(
+            0 30px 50px
+            rgba(14,165,233,.18)
+        );
+
+    transition:transform .5s ease;
+}
+
+.hero-image:hover{
+    transform:scale(1.025);
+}
+
+/* ================= SKILLS ================= */
 
 .skill-bar{
- height:6px;
- background:#1e293b;
- border-radius:20px;
- overflow:hidden;
+    height:6px;
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
 }
 
 .skill-fill{
- height:100%;
- border-radius:20px;
- background:linear-gradient(90deg,#38bdf8,#8b5cf6);
- width:0;
- transition:width 1.5s ease;
+    height:100%;
+    width:0;
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #8b5cf6
+        );
+
+    transition:width 1.5s ease;
 }
 
-/* =========================
-   PROJECT
-========================= */
+/* ================= PROJECTS ================= */
 
 .project-card{
- transition:.4s;
+    transition:.4s;
 }
 
 .project-card:hover{
- transform:translateY(-10px);
+    transform:translateY(-10px);
 }
 
 .project-number{
- color:#38bdf8;
- font-family:'Fira Code',monospace;
+    color:#38bdf8;
+    font-family:'Fira Code',monospace;
 }
 
-/* =========================
-   TIMELINE
-========================= */
+/* ================= TIMELINE ================= */
 
 .timeline{
- position:relative;
+    position:relative;
 }
 
 .timeline::before{
- content:"";
- position:absolute;
- left:14px;
- top:0;
- bottom:0;
- width:2px;
- background:linear-gradient(#38bdf8,#8b5cf6,transparent);
+    content:"";
+    position:absolute;
+    left:14px;
+    top:0;
+    bottom:0;
+    width:2px;
+
+    background:
+        linear-gradient(
+            #38bdf8,
+            #8b5cf6,
+            transparent
+        );
 }
 
 .timeline-dot{
- position:absolute;
- left:6px;
- top:25px;
- width:18px;
- height:18px;
- border-radius:50%;
- background:#020617;
- border:3px solid #38bdf8;
+    position:absolute;
+    left:6px;
+    top:25px;
+
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#020617;
+
+    border:3px solid #38bdf8;
 }
 
-/* =========================
-   SCROLL ANIMATION
-========================= */
+/* ================= SCROLL ANIMATION ================= */
 
 .hiddenSec{
- opacity:0;
- transform:translateY(50px);
- transition:1s ease;
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s ease;
 }
 
 .show{
- opacity:1;
- transform:translateY(0);
+    opacity:1;
+    transform:translateY(0);
 }
 
-/* =========================
-   SCROLL BAR
-========================= */
+/* ================= SCROLL PROGRESS ================= */
 
 #progress{
- position:fixed;
- top:0;
- left:0;
- height:3px;
- background:linear-gradient(90deg,#38bdf8,#a855f7);
- width:0%;
- z-index:9999;
+    position:fixed;
+    top:0;
+    left:0;
+
+    height:3px;
+    width:0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #a855f7
+        );
+
+    z-index:9999;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* ================= MOBILE ================= */
+
+@media(max-width:1024px){
+
+    .hero-orbit{
+        width:360px;
+        height:360px;
+    }
+
+    .hero-orbit-two{
+        width:280px;
+        height:280px;
+    }
+
+}
 
 @media(max-width:768px){
 
- .hero-orb{
-  width:230px;
-  height:230px;
- }
+    .hero-title{
+        font-size:3rem;
+    }
 
- .hero-title{
-  font-size:2.8rem;
- }
+    .hero-orbit{
+        width:300px;
+        height:300px;
+    }
+
+    .hero-orbit-two{
+        width:230px;
+        height:230px;
+    }
 
 }
 
@@ -335,41 +381,64 @@ body{
 
 <body>
 
+<!-- SCROLL PROGRESS -->
 <div id="progress"></div>
 
+<!-- BACKGROUND -->
 <canvas id="bg"></canvas>
 
 <div class="bg-glow glow-one"></div>
 <div class="bg-glow glow-two"></div>
 
 
-<!-- ================= NAVBAR ================= -->
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <nav class="navbar fixed top-0 left-0 w-full z-50">
 
 <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
 <a href="#home"
-class="mono text-sky-400 font-bold text-xl">
-MG<span class="text-slate-500">.</span>
+   class="mono text-sky-400 font-bold text-xl">
+
+    MG<span class="text-slate-500">.</span>
+
 </a>
 
 <div class="hidden md:flex gap-8 text-sm">
 
-<a href="#home" class="nav-link">Home</a>
-<a href="#about" class="nav-link">About</a>
-<a href="#skills" class="nav-link">Skills</a>
-<a href="#education" class="nav-link">Education</a>
-<a href="#projects" class="nav-link">Projects</a>
-<a href="#contact" class="nav-link">Contact</a>
+<a href="#home" class="nav-link">
+    Home
+</a>
+
+<a href="#about" class="nav-link">
+    About
+</a>
+
+<a href="#skills" class="nav-link">
+    Skills
+</a>
+
+<a href="#education" class="nav-link">
+    Education
+</a>
+
+<a href="#projects" class="nav-link">
+    Projects
+</a>
+
+<a href="#contact" class="nav-link">
+    Contact
+</a>
 
 </div>
 
 <a href="ManneGaneshResume.pdf"
-download
-class="hidden md:block px-5 py-2 rounded-full btn-primary text-sm font-semibold text-white">
+   download
+   class="hidden md:block px-5 py-2 rounded-full btn-primary text-sm font-semibold text-white">
 
-Resume
+    Resume
 
 </a>
 
@@ -378,71 +447,191 @@ Resume
 </nav>
 
 
-<!-- ================= HERO ================= -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
 <section id="home"
-class="min-h-screen flex items-center justify-center relative px-6 pt-20">
+         class="min-h-screen flex items-center relative px-6 pt-24 overflow-hidden">
 
-<div class="hero-orb"></div>
+<div class="max-w-7xl w-full mx-auto grid lg:grid-cols-2 gap-8 items-center">
 
-<div class="max-w-5xl text-center relative z-10">
+
+<!-- HERO LEFT -->
+
+<div class="relative z-10 text-center lg:text-left">
 
 <p class="section-label mb-5">
-AI / ML DEVELOPER
+    AI / ML DEVELOPER
 </p>
 
-<h1 class="hero-title text-5xl md:text-7xl font-extrabold leading-tight mb-6">
+<h1 class="hero-title text-5xl md:text-6xl xl:text-7xl font-extrabold leading-tight mb-6">
 
 <span class="gradient-text" id="typing"></span>
-<span class="cursor">|</span>
+
+<span class="cursor">
+    |
+</span>
 
 </h1>
 
-<p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">
+<p class="text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
 
-Computer Science undergraduate specializing in
-<strong class="text-slate-200">AI & Machine Learning</strong>,
-building practical software, deep-learning systems,
-and intelligent applications.
+    Computer Science undergraduate specializing in
+
+    <strong class="text-slate-200">
+        Artificial Intelligence & Machine Learning
+    </strong>,
+
+    building practical software,
+    deep-learning systems,
+    and intelligent applications.
 
 </p>
 
-<div class="flex flex-wrap justify-center gap-4 mb-10">
+
+<!-- BUTTONS -->
+
+<div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-8">
 
 <a href="#projects"
-class="btn-primary px-7 py-3 rounded-full font-semibold">
+   class="btn-primary px-7 py-3 rounded-full font-semibold">
 
-View My Work →
+    View My Work →
 
 </a>
 
 <a href="ManneGaneshResume.pdf"
-download
-class="btn-secondary px-7 py-3 rounded-full font-semibold">
+   download
+   class="btn-secondary px-7 py-3 rounded-full font-semibold">
 
-Download Resume
+    Download Resume
 
 </a>
 
 </div>
 
-<div class="flex flex-wrap justify-center gap-3">
 
-<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
-🐍 Python
+<!-- TECH BADGES -->
+
+<div class="flex flex-wrap justify-center lg:justify-start gap-3">
+
+<span class="glass px-4 py-2 rounded-full text-sm">
+    🐍 Python
 </span>
 
-<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
-☕ Java
+<span class="glass px-4 py-2 rounded-full text-sm">
+    ☕ Java
 </span>
 
-<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
-🧠 Machine Learning
+<span class="glass px-4 py-2 rounded-full text-sm">
+    🧠 Machine Learning
 </span>
 
-<span class="glass px-4 py-2 rounded-full text-sm text-slate-300">
-🔥 TensorFlow
+<span class="glass px-4 py-2 rounded-full text-sm">
+    🔥 TensorFlow
 </span>
+
+</div>
+
+</div>
+
+
+<!-- HERO RIGHT -->
+
+<div class="relative h-[550px] md:h-[650px] lg:h-[720px] flex items-end justify-center lg:justify-end">
+
+
+<!-- GLOW -->
+
+<div class="absolute
+            w-[400px]
+            h-[400px]
+            md:w-[550px]
+            md:h-[550px]
+            rounded-full
+            bg-sky-500/10
+            blur-[100px]">
+</div>
+
+
+<!-- ORBITS -->
+
+<div class="hero-orbit"></div>
+
+<div class="hero-orbit-two"></div>
+
+
+<!-- LARGE TRANSPARENT PROFILE -->
+
+<img
+    src="profile.png"
+
+    alt="Manne Ganesh - AI and ML Developer"
+
+    class="hero-image
+           relative
+           z-10
+           h-[500px]
+           md:h-[600px]
+           lg:h-[680px]
+           xl:h-[730px]
+           w-auto
+           max-w-none
+           object-contain
+           object-bottom"
+/>
+
+
+<!-- STATUS BADGE -->
+
+<div class="absolute
+            bottom-10
+            right-2
+            md:right-10
+            lg:right-0
+            z-20
+            glass
+            px-5
+            py-3
+            rounded-2xl">
+
+<div class="flex items-center gap-2">
+
+<span class="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse">
+</span>
+
+<span class="text-sm text-slate-300">
+    Open to AI/ML Internships
+</span>
+
+</div>
+
+</div>
+
+
+<!-- AI BADGE -->
+
+<div class="absolute
+            top-24
+            right-5
+            md:right-16
+            lg:right-5
+            z-20
+            glass
+            px-4
+            py-3
+            rounded-2xl">
+
+<p class="mono text-xs text-sky-400">
+    AI / ML
+</p>
+
+<p class="text-xs text-slate-400 mt-1">
+    Building intelligent systems
+</p>
+
+</div>
 
 </div>
 
@@ -451,45 +640,65 @@ Download Resume
 </section>
 
 
-<!-- ================= ABOUT ================= -->
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
 <section id="about"
-class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+         class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
 
 <div class="text-center mb-14">
 
 <p class="section-label mb-3">
-01 — ABOUT
+    01 — ABOUT
 </p>
 
 <h2 class="text-4xl font-bold">
-Building with <span class="gradient-text">AI & Software</span>
+
+    Building with
+
+    <span class="gradient-text">
+        AI & Software
+    </span>
+
 </h2>
 
 </div>
 
+
 <div class="grid md:grid-cols-2 gap-8 items-center">
+
 
 <div class="glass rounded-3xl p-8">
 
 <h3 class="text-2xl font-bold mb-5">
-Who I Am
+    Who I Am
 </h3>
 
 <p class="text-slate-400 leading-8">
 
-I am a Computer Science undergraduate specializing in
-<strong class="text-slate-200">Artificial Intelligence & Machine Learning</strong>.
-My interests span software development, machine learning,
-deep learning, data structures and practical AI applications.
+    I am a Computer Science undergraduate specializing in
+
+    <strong class="text-slate-200">
+        Artificial Intelligence & Machine Learning
+    </strong>.
+
+    My interests span software development,
+    machine learning,
+    deep learning,
+    data structures,
+    and practical AI applications.
 
 </p>
 
 <p class="text-slate-400 leading-8 mt-5">
 
-I enjoy taking an idea, breaking it into technical components,
-and turning it into a working application. My projects focus on
-solving practical problems through software and AI.
+    I enjoy taking an idea,
+    breaking it into technical components,
+    and turning it into a working application.
+
+    My projects focus on solving practical
+    problems through software and AI.
 
 </p>
 
@@ -501,47 +710,50 @@ solving practical problems through software and AI.
 <div class="glass rounded-3xl p-6">
 
 <p class="text-3xl font-bold gradient-text">
-2027
+    2027
 </p>
 
 <p class="text-slate-500 mt-2">
-Graduation
+    Graduation
 </p>
 
 </div>
 
+
 <div class="glass rounded-3xl p-6">
 
 <p class="text-3xl font-bold gradient-text">
-7.18
+    7.18
 </p>
 
 <p class="text-slate-500 mt-2">
-CGPA
+    CGPA
 </p>
 
 </div>
 
+
 <div class="glass rounded-3xl p-6">
 
 <p class="text-3xl font-bold gradient-text">
-03+
+    03+
 </p>
 
 <p class="text-slate-500 mt-2">
-Major Projects
+    Major Projects
 </p>
 
 </div>
 
+
 <div class="glass rounded-3xl p-6">
 
 <p class="text-3xl font-bold gradient-text">
-AI/ML
+    AI/ML
 </p>
 
 <p class="text-slate-500 mt-2">
-Specialization
+    Specialization
 </p>
 
 </div>
@@ -553,19 +765,27 @@ Specialization
 </section>
 
 
-<!-- ================= SKILLS ================= -->
+<!-- =====================================================
+     SKILLS
+===================================================== -->
 
 <section id="skills"
-class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+         class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
 
 <div class="text-center mb-14">
 
 <p class="section-label mb-3">
-02 — TECHNICAL SKILLS
+    02 — TECHNICAL SKILLS
 </p>
 
 <h2 class="text-4xl font-bold">
-My <span class="gradient-text">Technical Stack</span>
+
+    My
+
+    <span class="gradient-text">
+        Technical Stack
+    </span>
+
 </h2>
 
 </div>
@@ -574,79 +794,127 @@ My <span class="gradient-text">Technical Stack</span>
 <div class="grid md:grid-cols-2 gap-6">
 
 
+<!-- PROGRAMMING -->
+
 <div class="glass rounded-3xl p-7">
 
 <h3 class="text-xl font-bold mb-6">
-Programming
+    Programming
 </h3>
 
 <div class="space-y-6">
 
 <div>
+
 <div class="flex justify-between mb-2 text-sm">
-<span>Python</span>
-<span class="text-sky-400">AI / ML</span>
+
+<span>
+    Python
+</span>
+
+<span class="text-sky-400">
+    AI / ML
+</span>
+
 </div>
+
 <div class="skill-bar">
-<div class="skill-fill" data-width="90%"></div>
+
+<div class="skill-fill"
+     data-width="90%">
 </div>
+
 </div>
+
+</div>
+
 
 <div>
+
 <div class="flex justify-between mb-2 text-sm">
-<span>Java</span>
-<span class="text-sky-400">Application Development</span>
+
+<span>
+    Java
+</span>
+
+<span class="text-sky-400">
+    Application Development
+</span>
+
 </div>
+
 <div class="skill-bar">
-<div class="skill-fill" data-width="85%"></div>
+
+<div class="skill-fill"
+     data-width="85%">
 </div>
+
 </div>
+
+</div>
+
 
 <div>
+
 <div class="flex justify-between mb-2 text-sm">
-<span>C</span>
-<span class="text-sky-400">Core Programming</span>
+
+<span>
+    C
+</span>
+
+<span class="text-sky-400">
+    Core Programming
+</span>
+
 </div>
+
 <div class="skill-bar">
-<div class="skill-fill" data-width="70%"></div>
-</div>
+
+<div class="skill-fill"
+     data-width="70%">
 </div>
 
 </div>
 
 </div>
 
+</div>
+
+</div>
+
+
+<!-- AI -->
 
 <div class="glass rounded-3xl p-7">
 
 <h3 class="text-xl font-bold mb-6">
-AI / Machine Learning
+    AI / Machine Learning
 </h3>
 
 <div class="flex flex-wrap gap-3">
 
 <span class="px-4 py-2 rounded-full bg-sky-500/10 text-sky-400">
-TensorFlow
+    TensorFlow
 </span>
 
 <span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400">
-Keras
+    Keras
 </span>
 
 <span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400">
-CNN
+    CNN
 </span>
 
 <span class="px-4 py-2 rounded-full bg-orange-500/10 text-orange-400">
-Image Processing
+    Image Processing
 </span>
 
 <span class="px-4 py-2 rounded-full bg-pink-500/10 text-pink-400">
-Data Augmentation
+    Data Augmentation
 </span>
 
 <span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400">
-Machine Learning
+    Machine Learning
 </span>
 
 </div>
@@ -654,38 +922,70 @@ Machine Learning
 </div>
 
 
+<!-- DEVELOPMENT -->
+
 <div class="glass rounded-3xl p-7">
 
 <h3 class="text-xl font-bold mb-6">
-Development
+    Development
 </h3>
 
 <div class="flex flex-wrap gap-3">
 
-<span class="px-4 py-2 rounded-full bg-orange-500/10 text-orange-400">Android Studio</span>
-<span class="px-4 py-2 rounded-full bg-yellow-500/10 text-yellow-400">XML</span>
-<span class="px-4 py-2 rounded-full bg-green-500/10 text-green-400">HTML</span>
-<span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400">CSS</span>
-<span class="px-4 py-2 rounded-full bg-yellow-500/10 text-yellow-400">JavaScript</span>
+<span class="px-4 py-2 rounded-full bg-orange-500/10 text-orange-400">
+    Android Studio
+</span>
+
+<span class="px-4 py-2 rounded-full bg-yellow-500/10 text-yellow-400">
+    XML
+</span>
+
+<span class="px-4 py-2 rounded-full bg-green-500/10 text-green-400">
+    HTML
+</span>
+
+<span class="px-4 py-2 rounded-full bg-blue-500/10 text-blue-400">
+    CSS
+</span>
+
+<span class="px-4 py-2 rounded-full bg-yellow-500/10 text-yellow-400">
+    JavaScript
+</span>
 
 </div>
 
 </div>
 
 
+<!-- DATABASE -->
+
 <div class="glass rounded-3xl p-7">
 
 <h3 class="text-xl font-bold mb-6">
-Databases & CS Fundamentals
+    Databases & CS Fundamentals
 </h3>
 
 <div class="flex flex-wrap gap-3">
 
-<span class="px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400">MySQL</span>
-<span class="px-4 py-2 rounded-full bg-slate-500/10 text-slate-300">SQLite</span>
-<span class="px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400">OOP</span>
-<span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400">DSA</span>
-<span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400">Software Development</span>
+<span class="px-4 py-2 rounded-full bg-cyan-500/10 text-cyan-400">
+    MySQL
+</span>
+
+<span class="px-4 py-2 rounded-full bg-slate-500/10 text-slate-300">
+    SQLite
+</span>
+
+<span class="px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400">
+    OOP
+</span>
+
+<span class="px-4 py-2 rounded-full bg-purple-500/10 text-purple-400">
+    DSA
+</span>
+
+<span class="px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-400">
+    Software Development
+</span>
 
 </div>
 
@@ -696,29 +996,51 @@ Databases & CS Fundamentals
 </section>
 
 
-<!-- ================= STRONG SUBJECTS ================= -->
+<!-- =====================================================
+     STRONG SUBJECTS
+===================================================== -->
 
 <section class="py-20 px-6">
 
 <div class="max-w-5xl mx-auto text-center">
 
 <p class="section-label mb-4">
-CORE KNOWLEDGE
+    CORE KNOWLEDGE
 </p>
 
 <h2 class="text-3xl font-bold mb-10">
-Strong Subjects
+    Strong Subjects
 </h2>
 
 <div class="flex flex-wrap justify-center gap-4">
 
-<span class="glass px-6 py-3 rounded-full">Java</span>
-<span class="glass px-6 py-3 rounded-full">Python</span>
-<span class="glass px-6 py-3 rounded-full">OOP</span>
-<span class="glass px-6 py-3 rounded-full">Data Structures & Algorithms</span>
-<span class="glass px-6 py-3 rounded-full">SQL</span>
-<span class="glass px-6 py-3 rounded-full">Machine Learning</span>
-<span class="glass px-6 py-3 rounded-full">Artificial Intelligence</span>
+<span class="glass px-6 py-3 rounded-full">
+    Java
+</span>
+
+<span class="glass px-6 py-3 rounded-full">
+    Python
+</span>
+
+<span class="glass px-6 py-3 rounded-full">
+    OOP
+</span>
+
+<span class="glass px-6 py-3 rounded-full">
+    Data Structures & Algorithms
+</span>
+
+<span class="glass px-6 py-3 rounded-full">
+    SQL
+</span>
+
+<span class="glass px-6 py-3 rounded-full">
+    Machine Learning
+</span>
+
+<span class="glass px-6 py-3 rounded-full">
+    Artificial Intelligence
+</span>
 
 </div>
 
@@ -727,19 +1049,27 @@ Strong Subjects
 </section>
 
 
-<!-- ================= EDUCATION ================= -->
+<!-- =====================================================
+     EDUCATION
+===================================================== -->
 
 <section id="education"
-class="max-w-5xl mx-auto py-24 px-6 hiddenSec">
+         class="max-w-5xl mx-auto py-24 px-6 hiddenSec">
 
 <div class="text-center mb-14">
 
 <p class="section-label mb-3">
-03 — EDUCATION
+    03 — EDUCATION
 </p>
 
 <h2 class="text-4xl font-bold">
-Academic <span class="gradient-text">Journey</span>
+
+    Academic
+
+    <span class="gradient-text">
+        Journey
+    </span>
+
 </h2>
 
 </div>
@@ -748,6 +1078,8 @@ Academic <span class="gradient-text">Journey</span>
 <div class="timeline pl-12 space-y-10">
 
 
+<!-- BTECH -->
+
 <div class="relative">
 
 <div class="timeline-dot"></div>
@@ -755,25 +1087,27 @@ Academic <span class="gradient-text">Journey</span>
 <div class="glass rounded-3xl p-7">
 
 <span class="mono text-sky-400 text-sm">
-2023 — 2027
+    2023 — 2027
 </span>
 
 <h3 class="text-xl font-bold mt-2">
-B.Tech — Computer Science & Engineering (AI & ML)
+    B.Tech — Computer Science & Engineering (AI & ML)
 </h3>
 
 <p class="text-slate-400 mt-2">
-CMR Technical Campus
+    CMR Technical Campus
 </p>
 
 <p class="text-slate-500 mt-3">
-Autonomous • 7.18 CGPA
+    Autonomous • 7.18 CGPA
 </p>
 
 </div>
 
 </div>
 
+
+<!-- INTERMEDIATE -->
 
 <div class="relative">
 
@@ -782,25 +1116,27 @@ Autonomous • 7.18 CGPA
 <div class="glass rounded-3xl p-7">
 
 <span class="mono text-purple-400 text-sm">
-2021 — 2023
+    2021 — 2023
 </span>
 
 <h3 class="text-xl font-bold mt-2">
-Intermediate
+    Intermediate
 </h3>
 
 <p class="text-slate-400 mt-2">
-Sri Chaitanya Jr Kalasala
+    Sri Chaitanya Jr Kalasala
 </p>
 
 <p class="text-slate-500 mt-3">
-80%
+    80%
 </p>
 
 </div>
 
 </div>
 
+
+<!-- SSC -->
 
 <div class="relative">
 
@@ -809,19 +1145,19 @@ Sri Chaitanya Jr Kalasala
 <div class="glass rounded-3xl p-7">
 
 <span class="mono text-emerald-400 text-sm">
-2021
+    2021
 </span>
 
 <h3 class="text-xl font-bold mt-2">
-Secondary School Certificate
+    Secondary School Certificate
 </h3>
 
 <p class="text-slate-400 mt-2">
-Naagarjuna Talent School
+    Naagarjuna Talent School
 </p>
 
 <p class="text-slate-500 mt-3">
-9.5 CGPA
+    9.5 CGPA
 </p>
 
 </div>
@@ -833,23 +1169,31 @@ Naagarjuna Talent School
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
 
 <section id="projects"
-class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
+         class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
 
 <div class="text-center mb-14">
 
 <p class="section-label mb-3">
-04 — PROJECTS
+    04 — PROJECTS
 </p>
 
 <h2 class="text-4xl font-bold">
-Featured <span class="gradient-text">Projects</span>
+
+    Featured
+
+    <span class="gradient-text">
+        Projects
+    </span>
+
 </h2>
 
 <p class="text-slate-500 mt-4">
-Practical applications combining software engineering and AI.
+    Practical applications combining software engineering and AI.
 </p>
 
 </div>
@@ -858,51 +1202,54 @@ Practical applications combining software engineering and AI.
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
 
-<!-- PROJECT 01 -->
+<!-- PROJECT 1 -->
 
 <div class="glass project-card rounded-3xl p-7">
 
 <div class="flex justify-between items-center mb-5">
 
 <span class="project-number">
-01
+    01
 </span>
 
 <span class="text-3xl">
-🌱
+    🌱
 </span>
 
 </div>
 
 <h3 class="text-xl font-bold mb-3">
-Brinjal Leaf Disease Detection
+    Brinjal Leaf Disease Detection
 </h3>
 
 <p class="text-slate-400 text-sm leading-7 mb-5">
 
-Web-based deep learning application that detects
-brinjal leaf diseases from user-uploaded images.
-A CNN-based pipeline uses image preprocessing and
-data augmentation for classification.
+    Web-based deep learning application
+    that detects brinjal leaf diseases
+    from user-uploaded images.
+
+    A CNN-based pipeline uses image
+    preprocessing and data augmentation
+    for classification.
 
 </p>
 
 <div class="flex flex-wrap gap-2">
 
 <span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-400">
-Python
+    Python
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-red-500/10 text-red-400">
-TensorFlow
+    TensorFlow
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-400">
-CNN
+    CNN
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400">
-HTML/CSS
+    HTML/CSS
 </span>
 
 </div>
@@ -910,46 +1257,47 @@ HTML/CSS
 </div>
 
 
-<!-- PROJECT 02 -->
+<!-- PROJECT 2 -->
 
 <div class="glass project-card rounded-3xl p-7">
 
 <div class="flex justify-between items-center mb-5">
 
 <span class="project-number">
-02
+    02
 </span>
 
 <span class="text-3xl">
-📱
+    📱
 </span>
 
 </div>
 
 <h3 class="text-xl font-bold mb-3">
-Android Quiz Application
+    Android Quiz Application
 </h3>
 
 <p class="text-slate-400 text-sm leading-7 mb-5">
 
-Category-based Android quiz application featuring
-timed question rounds, real-time score tracking,
-multiple linked activities and responsive UI design.
+    Category-based Android quiz application
+    featuring timed question rounds,
+    real-time score tracking, multiple
+    linked activities and responsive UI design.
 
 </p>
 
 <div class="flex flex-wrap gap-2">
 
 <span class="text-xs px-3 py-1 rounded-full bg-orange-500/10 text-orange-400">
-Java
+    Java
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-400">
-Android Studio
+    Android Studio
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400">
-XML
+    XML
 </span>
 
 </div>
@@ -957,47 +1305,50 @@ XML
 </div>
 
 
-<!-- PROJECT 03 -->
+<!-- PROJECT 3 -->
 
 <div class="glass project-card rounded-3xl p-7">
 
 <div class="flex justify-between items-center mb-5">
 
 <span class="project-number">
-03
+    03
 </span>
 
 <span class="text-3xl">
-🥛
+    🥛
 </span>
 
 </div>
 
 <h3 class="text-xl font-bold mb-3">
-Milkfy
+    Milkfy
 </h3>
 
 <p class="text-slate-400 text-sm leading-7 mb-5">
 
-Startup-style milk subscription and delivery platform
-concept designed to digitize local milk distribution,
-including subscription tracking, customer management,
-delivery scheduling and automated billing.
+    Startup-style milk subscription and
+    delivery platform designed to digitize
+    local milk distribution.
+
+    Includes subscription tracking,
+    customer management, delivery
+    scheduling and automated billing.
 
 </p>
 
 <div class="flex flex-wrap gap-2">
 
 <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-400">
-Python
+    Python
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-orange-500/10 text-orange-400">
-HTML/CSS
+    HTML/CSS
 </span>
 
 <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400">
-Supabase
+    Supabase
 </span>
 
 </div>
@@ -1009,18 +1360,26 @@ Supabase
 </section>
 
 
-<!-- ================= ACHIEVEMENTS ================= -->
+<!-- =====================================================
+     ACHIEVEMENTS
+===================================================== -->
 
 <section class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
 
 <div class="text-center mb-14">
 
 <p class="section-label mb-3">
-05 — ACHIEVEMENTS
+    05 — ACHIEVEMENTS
 </p>
 
 <h2 class="text-4xl font-bold">
-Beyond <span class="gradient-text">Academics</span>
+
+    Beyond
+
+    <span class="gradient-text">
+        Academics
+    </span>
+
 </h2>
 
 </div>
@@ -1032,17 +1391,20 @@ Beyond <span class="gradient-text">Academics</span>
 <div class="glass rounded-3xl p-7">
 
 <div class="text-3xl mb-5">
-🏆
+    🏆
 </div>
 
 <h3 class="font-bold text-lg mb-3">
-Hackathons
+    Hackathons
 </h3>
 
 <p class="text-slate-400 text-sm leading-7">
-Participated in hackathons and competitive coding
-events, applying problem-solving skills under
-time constraints.
+
+    Participated in hackathons and
+    competitive coding events,
+    applying problem-solving skills
+    under time constraints.
+
 </p>
 
 </div>
@@ -1051,16 +1413,19 @@ time constraints.
 <div class="glass rounded-3xl p-7">
 
 <div class="text-3xl mb-5">
-🚀
+    🚀
 </div>
 
 <h3 class="font-bold text-lg mb-3">
-Startup Concepts
+    Startup Concepts
 </h3>
 
 <p class="text-slate-400 text-sm leading-7">
-Initiated and scoped independent startup concepts,
-turning early-stage ideas into structured product plans.
+
+    Initiated and scoped independent
+    startup concepts, turning early-stage
+    ideas into structured product plans.
+
 </p>
 
 </div>
@@ -1069,16 +1434,19 @@ turning early-stage ideas into structured product plans.
 <div class="glass rounded-3xl p-7">
 
 <div class="text-3xl mb-5">
-🧠
+    🧠
 </div>
 
 <h3 class="font-bold text-lg mb-3">
-Continuous Learning
+    Continuous Learning
 </h3>
 
 <p class="text-slate-400 text-sm leading-7">
-Actively developing AI/ML skills through self-directed
-projects, experimentation and academic coursework.
+
+    Actively developing AI/ML skills
+    through self-directed projects,
+    experimentation and coursework.
+
 </p>
 
 </div>
@@ -1088,39 +1456,49 @@ projects, experimentation and academic coursework.
 </section>
 
 
-<!-- ================= GITHUB ================= -->
+<!-- =====================================================
+     GITHUB
+===================================================== -->
 
 <section class="max-w-6xl mx-auto py-24 px-6 hiddenSec">
 
 <div class="text-center mb-10">
 
 <p class="section-label mb-3">
-06 — OPEN SOURCE
+    06 — OPEN SOURCE
 </p>
 
 <h2 class="text-4xl font-bold">
-GitHub <span class="gradient-text">Activity</span>
+
+    GitHub
+
+    <span class="gradient-text">
+        Activity
+    </span>
+
 </h2>
 
 </div>
 
+
 <div class="glass rounded-3xl p-5 overflow-hidden text-center">
 
 <img
-src="https://github-readme-stats.vercel.app/api?username=manneganesh27&show_icons=true&theme=tokyonight&hide_border=true"
-alt="GitHub statistics"
-class="mx-auto max-w-full"
+    src="https://github-readme-stats.vercel.app/api?username=manneganesh27&show_icons=true&theme=tokyonight&hide_border=true"
+    alt="GitHub statistics"
+    class="mx-auto max-w-full"
 >
+
 
 <div class="mt-6">
 
 <a
-href="https://github.com/manneganesh27"
-target="_blank"
-class="btn-secondary inline-block px-6 py-3 rounded-full"
->
+    href="https://github.com/manneganesh27"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-secondary inline-block px-6 py-3 rounded-full">
 
-View GitHub Profile →
+    View GitHub Profile →
 
 </a>
 
@@ -1131,28 +1509,35 @@ View GitHub Profile →
 </section>
 
 
-<!-- ================= CONTACT ================= -->
+<!-- =====================================================
+     CONTACT
+===================================================== -->
 
 <section id="contact"
-class="max-w-5xl mx-auto py-28 px-6 text-center">
+         class="max-w-5xl mx-auto py-28 px-6 text-center">
 
 <p class="section-label mb-4">
-07 — CONTACT
+    07 — CONTACT
 </p>
 
 <h2 class="text-4xl md:text-5xl font-bold mb-6">
 
-Let's build something
-<span class="gradient-text">intelligent.</span>
+    Let's build something
+
+    <span class="gradient-text">
+        intelligent.
+    </span>
 
 </h2>
 
 <p class="text-slate-400 max-w-xl mx-auto mb-10">
 
-Interested in AI/ML, software development, internships,
-collaborations or building practical products?
+    Interested in AI/ML,
+    software development,
+    internships, collaborations
+    or building practical products?
 
-Let's connect.
+    Let's connect.
 
 </p>
 
@@ -1160,31 +1545,32 @@ Let's connect.
 <div class="flex flex-wrap justify-center gap-4">
 
 <a
-href="mailto:manneganesh27@gmail.com"
-class="btn-primary px-7 py-3 rounded-full font-semibold"
->
+    href="mailto:manneganesh27@gmail.com"
+    class="btn-primary px-7 py-3 rounded-full font-semibold">
 
-Email Me
-
-</a>
-
-<a
-href="https://www.linkedin.com/in/manne-ganesh-86a95a28b"
-target="_blank"
-class="btn-secondary px-7 py-3 rounded-full"
->
-
-LinkedIn
+    Email Me
 
 </a>
 
-<a
-href="https://github.com/manneganesh27"
-target="_blank"
-class="btn-secondary px-7 py-3 rounded-full"
->
 
-GitHub
+<a
+    href="https://www.linkedin.com/in/manne-ganesh-86a95a28b"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-secondary px-7 py-3 rounded-full">
+
+    LinkedIn
+
+</a>
+
+
+<a
+    href="https://github.com/manneganesh27"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-secondary px-7 py-3 rounded-full">
+
+    GitHub
 
 </a>
 
@@ -1193,212 +1579,261 @@ GitHub
 </section>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer class="border-t border-slate-900 py-10 text-center">
 
 <p class="mono text-sky-400 font-semibold">
-Manne Ganesh
+    Manne Ganesh
 </p>
 
 <p class="text-slate-600 text-sm mt-3">
-AI & ML Developer • CSE Undergraduate
+    AI & ML Developer • CSE Undergraduate
 </p>
 
 <p class="text-slate-700 text-xs mt-6">
-© 2026 Manne Ganesh. Built with HTML, CSS & JavaScript.
+    © 2026 Manne Ganesh.
+    Built with HTML, CSS & JavaScript.
 </p>
 
 </footer>
 
 
-<!-- ================= SCRIPTS ================= -->
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
 
 <script>
 
-/* =================
-   TYPING EFFECT
-================= */
+/* ================= TYPING EFFECT ================= */
 
-const text="Building Intelligent AI Systems";
-let i=0;
+const text = "Building Intelligent AI Systems";
+
+let i = 0;
 
 function typing(){
 
- if(i<text.length){
+    if(i < text.length){
 
-  document.getElementById("typing").textContent += text.charAt(i);
+        document
+            .getElementById("typing")
+            .textContent += text.charAt(i);
 
-  i++;
+        i++;
 
-  setTimeout(typing,60);
-
- }
-
+        setTimeout(typing,60);
+    }
 }
 
 typing();
 
 
-/* =================
-   PARTICLE BACKGROUND
-================= */
+/* ================= PARTICLES ================= */
 
-const canvas=document.getElementById("bg");
-const ctx=canvas.getContext("2d");
+const canvas =
+    document.getElementById("bg");
 
-let particles=[];
+const ctx =
+    canvas.getContext("2d");
+
+let particles = [];
+
 
 function resizeCanvas(){
 
- canvas.width=window.innerWidth;
- canvas.height=window.innerHeight;
+    canvas.width =
+        window.innerWidth;
 
+    canvas.height =
+        window.innerHeight;
 }
 
 resizeCanvas();
 
-window.addEventListener("resize",resizeCanvas);
+window.addEventListener(
+    "resize",
+    resizeCanvas
+);
 
 
-for(let i=0;i<90;i++){
+for(let i = 0; i < 90; i++){
 
- particles.push({
+    particles.push({
 
-  x:Math.random()*window.innerWidth,
-  y:Math.random()*window.innerHeight,
+        x:
+            Math.random() *
+            window.innerWidth,
 
-  r:Math.random()*1.8+.4,
+        y:
+            Math.random() *
+            window.innerHeight,
 
-  speed:Math.random()*.5+.15
+        r:
+            Math.random() * 1.8 + .4,
 
- });
+        speed:
+            Math.random() * .5 + .15
 
+    });
 }
 
 
 function animate(){
 
- ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
 
- particles.forEach(p=>{
 
-  ctx.beginPath();
+    particles.forEach(p => {
 
-  ctx.arc(
-   p.x,
-   p.y,
-   p.r,
-   0,
-   Math.PI*2
-  );
+        ctx.beginPath();
 
-  ctx.fillStyle="rgba(56,189,248,.55)";
+        ctx.arc(
+            p.x,
+            p.y,
+            p.r,
+            0,
+            Math.PI * 2
+        );
 
-  ctx.fill();
+        ctx.fillStyle =
+            "rgba(56,189,248,.55)";
 
-  p.y+=p.speed;
+        ctx.fill();
 
-  if(p.y>canvas.height){
+        p.y += p.speed;
 
-   p.y=0;
-   p.x=Math.random()*canvas.width;
 
-  }
+        if(p.y > canvas.height){
 
- });
+            p.y = 0;
 
- requestAnimationFrame(animate);
+            p.x =
+                Math.random() *
+                canvas.width;
+        }
 
+    });
+
+
+    requestAnimationFrame(
+        animate
+    );
 }
 
 animate();
 
 
-/* =================
-   SCROLL ANIMATION
-================= */
+/* ================= SECTION REVEAL ================= */
 
-const observer=new IntersectionObserver(
+const observer =
+    new IntersectionObserver(
 
- entries=>{
+        entries => {
 
-  entries.forEach(entry=>{
+            entries.forEach(entry => {
 
-   if(entry.isIntersecting){
+                if(entry.isIntersecting){
 
-    entry.target.classList.add("show");
+                    entry.target
+                        .classList
+                        .add("show");
 
-   }
+                }
 
-  });
+            });
 
- },
+        },
 
- {threshold:.12}
-
-);
-
-
-document
-.querySelectorAll(".hiddenSec")
-.forEach(section=>observer.observe(section));
-
-
-/* =================
-   SKILL ANIMATION
-================= */
-
-const skillObserver=new IntersectionObserver(
-
- entries=>{
-
-  entries.forEach(entry=>{
-
-   if(entry.isIntersecting){
-
-    const bars=entry.target.querySelectorAll(".skill-fill");
-
-    bars.forEach(bar=>{
-
-     bar.style.width=bar.dataset.width;
-
-    });
-
-   }
-
-  });
-
- },
-
- {threshold:.4}
-
-);
+        {
+            threshold:.12
+        }
+    );
 
 
 document
-.querySelectorAll("#skills")
-.forEach(section=>skillObserver.observe(section));
+    .querySelectorAll(".hiddenSec")
+    .forEach(section =>
+        observer.observe(section)
+    );
 
 
-/* =================
-   SCROLL PROGRESS
-================= */
+/* ================= SKILL ANIMATION ================= */
 
-window.addEventListener("scroll",()=>{
+const skillObserver =
+    new IntersectionObserver(
 
- const scrollTop=window.scrollY;
+        entries => {
 
- const height=
- document.documentElement.scrollHeight-
- window.innerHeight;
+            entries.forEach(entry => {
 
- const progress=(scrollTop/height)*100;
+                if(entry.isIntersecting){
 
- document.getElementById("progress").style.width=
- progress+"%";
+                    const bars =
+                        entry.target
+                        .querySelectorAll(
+                            ".skill-fill"
+                        );
 
-});
+
+                    bars.forEach(bar => {
+
+                        bar.style.width =
+                            bar.dataset.width;
+
+                    });
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.4
+        }
+    );
+
+
+document
+    .querySelectorAll("#skills")
+    .forEach(section =>
+        skillObserver.observe(section)
+    );
+
+
+/* ================= SCROLL PROGRESS ================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const scrollTop =
+            window.scrollY;
+
+        const height =
+            document.documentElement
+            .scrollHeight -
+            window.innerHeight;
+
+
+        const progress =
+            (scrollTop / height) * 100;
+
+
+        document
+            .getElementById("progress")
+            .style.width =
+                progress + "%";
+
+    }
+);
 
 </script>
 
